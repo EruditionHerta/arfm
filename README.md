@@ -1,5 +1,12 @@
 # ARFM: Auto-Regressive Flow Matching
 
+<p align="center">
+    <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python">
+    <img src="https://img.shields.io/badge/PyTorch-2.7+-ee4c2c.svg" alt="PyTorch">
+    <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
+    <img src="https://img.shields.io/badge/CUDA-12.6-76B900.svg" alt="CUDA">
+</p>
+
 **ARFM** is a generative model built on Flow Matching that introduces a **spatially heterogeneous time field** to implicitly achieve auto-regressive image generation — images are synthesized progressively from center to edges.
 
 Conditional generation(CFG=4) in MNIST: 
