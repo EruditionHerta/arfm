@@ -38,9 +38,9 @@ The core idea is to replace the uniform scalar time $t$ in standard Flow Matchin
 
 For each pixel, we first compute its normalized Euclidean distance from the image center: $r = \| (x,y) - c \| / r_{\max}$, where $r \in [0, 1]$. The local startup time and local time are then defined as:
 
-$$\tau_{\mathrm{start}}(r) = \alpha \cdot r^{\beta}, \qquad t = \mathrm{clamp}\!\left(\frac{\tau - \tau_{\mathrm{start}}(r)}{1 - \tau_{\mathrm{start}}(r)},\ 0,\ 1\right)$$
+$$\tau_{\mathrm{start}}(r) = \alpha \cdot r^{\beta}, \qquad t = \mathrm{clamp}\left(\frac{\tau - \tau_{\mathrm{start}}(r)}{1 - \tau_{\mathrm{start}}(r)},\ 0,\ 1\right)$$
 
-where $\alpha$ is the edge startup delay and $\beta$ is the distance power. At $\tau=0$ all pixels are near pure noise ($t \approx 0$); at $\tau=1$ all pixels complete ($t \approx 1$). During generation, center pixels evolve first while edge pixels lag behind and catch up later.
+where $\alpha$ is the edge startup delay and $\beta$ is the distance power. At $\tau=0$ all pixels are near pure noise ($t \approx 0$) ; at $\tau=1$ all pixels complete ($t \approx 1$). During generation, center pixels evolve first while edge pixels lag behind and catch up later.
 
 ### SPADE Conditioning
 
@@ -52,7 +52,7 @@ where $\hat{x}$ is the normalized feature map, and $\gamma(\cdot), \beta(\cdot)$
 
 ### Unbiased Flow Matching Loss
 
-The training objective is derivative-weighted MSE. Given noise sample $\mathbf{x}_0 \sim \mathcal{N}(0, I)$, ground-truth image $\mathbf{x}_1$, and intermediate state $\mathbf{x}_\tau = (1 - t_{\mathrm{map}}) \odot \mathbf{x}_0 + t_{\mathrm{map}} \odot \mathbf{x}_1$, the loss is:
+The training objective is derivative-weighted MSE. Given noise sample $\mathbf x_0 \sim \mathcal{N}(0,I)$, ground-truth image $\mathbf x_1$, and intermediate state $\mathbf x_\tau = (1 - t_{\mathrm{map}}) \odot \mathbf x_0 + t_{\mathrm{map}} \odot \mathbf x_1$, the loss is:
 
 $$\mathcal{L} = \left\| \mathbf{v}_\theta(\mathbf{x}_\tau,\, t_{\mathrm{map}}) - (\mathbf{x}_1 - \mathbf{x}_0) \right\|^2 \cdot \frac{\partial t}{\partial \tau}$$
 
